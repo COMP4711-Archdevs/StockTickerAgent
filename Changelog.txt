@@ -2,4 +2,6 @@ ASSIGNMENT 1 CHANGELOG
 ----------------------
 ##Created CI project
 
-1 modify database config file, add mysql file
+## modify database config file, add mysql file
+
+## Created core controller/model, created default template, displayed contents of stock/player tables on home page

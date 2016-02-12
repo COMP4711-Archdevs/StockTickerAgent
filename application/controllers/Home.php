@@ -21,14 +21,18 @@ class Home extends Application {
         $results = $this->stock->all();
         $results2 = $this->player->all();
         
-        $data = array(
+        /*$data = array(
             'title'  => "Home Page",
             'stocks' => $results,
             'players' => $results2
         );
-        
-        $this->load->library('template');
-        $this->template->load('default', 'display', $data);
+        */
+        //$this->load->library('template');
+        //$this->template->load('default', 'display', $data);
+        //$this->parser->parse('_template', $data);
+        $this->data['title'] = "Home page";
+        $this->data['pagebody'] = 'home_page';
+        $this->render();
     }
     
 }

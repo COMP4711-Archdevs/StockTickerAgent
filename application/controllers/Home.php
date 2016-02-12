@@ -32,6 +32,8 @@ class Home extends Application {
         //$this->parser->parse('_template', $data);
         $this->data['title'] = "Home page";
         $this->data['pagebody'] = 'home_page';
+        $this->data['stocks'] = $results;
+        $this->data['players'] = $results2;
         $this->render();
     }
     

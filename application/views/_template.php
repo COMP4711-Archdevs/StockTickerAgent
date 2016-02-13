@@ -49,7 +49,7 @@ if (!defined('APPPATH'))
                         <a class="page-scroll" href="#about">Stocks</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Profile</a>
+                        <a class="page-scroll" href="History">History</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Login</a>

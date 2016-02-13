@@ -23,10 +23,16 @@ class Home extends Application {
         
         $this->data['title'] = "Stock Ticker Agent";
         
+
         $this->stocks();
         $this->players();
-        
+        $this->data['menucontent'] = '_menupanel';
+        $loginname = $this->session->userdata('username');
+
+        echo $loginname;
         $this->render();
+
+        
     }
     
     function stocks(){
@@ -39,6 +45,17 @@ class Home extends Application {
         $results2 = $this->player->all();
         $this->data['players'] = $results2;
         $this->data['playercontent'] = '_playerpanel';
+    }
+
+    function login(){
+        $username = $this->input->post('username');
+        $sess_data = array(
+                'username'   => $username,
+                'logged_in'=> 1,
+            );
+        $loginname = $this->session->userdata('username');
+
+        echo $loginname;
     }
     
 }

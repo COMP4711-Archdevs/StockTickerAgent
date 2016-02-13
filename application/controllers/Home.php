@@ -25,20 +25,20 @@ class Home extends Application {
         
         $this->stocks();
         $this->players();
-        
+        $this->data['pagebody'] = 'home_page';
         $this->render();
     }
     
     function stocks(){
         $results = $this->stock->all();
         $this->data['stocks'] = $results;
-        $this->data['stockcontent'] = '_stockpanel';
+        //$this->data['stockcontent'] = '_stockpanel';
     }
     
     function players(){
         $results2 = $this->player->all();
         $this->data['players'] = $results2;
-        $this->data['playercontent'] = '_playerpanel';
+        //$this->data['playercontent'] = '_playerpanel';
     }
     
 }

@@ -13,14 +13,25 @@ class History extends Application {
     }
     
     function index(){
-        $movResult = $this->movement->all();
-        $transResult = $this->transaction->all();
+        
+        
         
         $this->data['title'] = "History";
         $this->data['pagebody'] = 'history_page';
-        $this->data['transactions'] = $transResult;
-        $this->data['movements'] = $movResult;
+        $this->getMovements();
+        $this->getTransactions();
+        
         $this->render();
+    }
+    
+    function getTransactions(){
+        $transResult = $this->transaction->all();
+        $this->data['transactions'] = $transResult;
+    }
+    
+    function getMovements(){
+        $movResult = $this->movement->all();
+        $this->data['movements'] = $movResult;
     }
     
 }

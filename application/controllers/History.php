@@ -16,9 +16,15 @@ class History extends Application {
     function index(){
         $this->data['title'] = "History";
         $this->data['pagebody'] = 'history_page';
-        $session_data = $this->session->userdata('logged_in');
-        $this->data['user'] = $session_data['name'];
-        $this->data['menubody'] = 'menucontent';
+        if($this->session->userdata('logged_in')){
+             $session_data = $this->session->userdata('logged_in');
+             $this->data['user'] = $session_data['name'];
+             $this->data['menubody'] = 'menucontent';
+        }
+        else{
+            $this->data['menubody'] = 'menucontent_login';
+        }
+        
         $this->get_movements();
         $this->get_transactions();
         $this->create_dropdown();

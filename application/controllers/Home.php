@@ -26,6 +26,15 @@ class Home extends Application {
         $this->stocks();
         $this->players();
         $this->data['pagebody'] = 'home_page';
+        if($this->session->userdata('logged_in')){
+             $session_data = $this->session->userdata('logged_in');
+             $this->data['user'] = $session_data['name'];
+             $this->data['menubody'] = 'menucontent';
+        }
+        else{
+            $this->data['menubody'] = 'menucontent_login';
+             //If no session, redirect to login page
+        }
         $this->render();
     }
     
@@ -39,6 +48,24 @@ class Home extends Application {
         $results2 = $this->player->all();
         $this->data['players'] = $results2;
         //$this->data['playercontent'] = '_playerpanel';
+    }
+
+    function login(){
+        $username = $this->input->post('username');
+
+        $sess_array = array(
+            'id'    => 1,
+            'name' => $username,
+            'isloggedin'=> 1
+        );
+        $this->session->set_userdata('logged_in', $sess_array);
+        redirect('home', 'refresh');
+    }
+
+    function logout(){
+        $this->session->unset_userdata('logged_in');
+        session_destroy();
+        redirect('home', 'refresh');
     }
     
 }

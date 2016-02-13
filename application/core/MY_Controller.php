@@ -37,7 +37,8 @@ class Application extends CI_Controller {
         //$this->data['panel2'] = $this->parser->parse($this->data['playercontent'], $this->data, true);
 
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-        
+        $this->data['menucontent'] = $this->parser->parse($this->data['menubody'], $this->data, true);
+
         // finally, build the browser page!
         $this->data['data'] = &$this->data;
         $this->parser->parse('_template', $this->data);

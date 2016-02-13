@@ -33,9 +33,11 @@ class Application extends CI_Controller {
     function render() {
 //        $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
         
-        $this->data['stockpanel'] = $this->parser->parse($this->data['stockcontent'], $this->data, true);
-        $this->data['playerpanel'] = $this->parser->parse($this->data['playercontent'], $this->data, true);
+       // $this->data['panel1'] = $this->parser->parse($this->data['panel1'], $this->data, true);
+        //$this->data['panel2'] = $this->parser->parse($this->data['playercontent'], $this->data, true);
 
+        $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
+        
         // finally, build the browser page!
         $this->data['data'] = &$this->data;
         $this->parser->parse('_template', $this->data);

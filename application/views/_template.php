@@ -66,8 +66,8 @@ if (!defined('APPPATH'))
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" id="content">
-                    {stockpanel}
-                    {playerpanel}
+                    {content}
+                
                 </div>
             </div>
         </div>

@@ -14,11 +14,11 @@ class History extends Application {
     }
     
     function index(){
-        
-        
-        
         $this->data['title'] = "History";
         $this->data['pagebody'] = 'history_page';
+        $session_data = $this->session->userdata('logged_in');
+        $this->data['user'] = $session_data['name'];
+        $this->data['menubody'] = 'menucontent';
         $this->get_movements();
         $this->get_transactions();
         $this->create_dropdown();

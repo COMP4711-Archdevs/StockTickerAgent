@@ -1,6 +1,4 @@
-<select name="stocks">
-    {Code}
-</select>
+{historydropdown}
 
 <h2>Movement</h2>
 

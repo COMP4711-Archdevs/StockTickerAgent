@@ -21,20 +21,24 @@ class Home extends Application {
         $results = $this->stock->all();
         $results2 = $this->player->all();
         
-        /*$data = array(
-            'title'  => "Home Page",
-            'stocks' => $results,
-            'players' => $results2
-        );
-        */
-        //$this->load->library('template');
-        //$this->template->load('default', 'display', $data);
-        //$this->parser->parse('_template', $data);
-        $this->data['title'] = "Home page";
-        $this->data['pagebody'] = 'home_page';
-        $this->data['stocks'] = $results;
-        $this->data['players'] = $results2;
+        $this->data['title'] = "Stock Ticker Agent";
+        
+        $this->stocks();
+        $this->players();
+        
         $this->render();
+    }
+    
+    function stocks(){
+        $results = $this->stock->all();
+        $this->data['stocks'] = $results;
+        $this->data['stockcontent'] = '_stockpanel';
+    }
+    
+    function players(){
+        $results2 = $this->player->all();
+        $this->data['players'] = $results2;
+        $this->data['playercontent'] = '_playerpanel';
     }
     
 }

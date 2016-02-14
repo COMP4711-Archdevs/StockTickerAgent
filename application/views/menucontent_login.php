@@ -26,7 +26,11 @@
                     <li>
                         <form action="/Home/login" method="post">
 						    <div class = "form-group form-inline control-group info">
-						        <strong>Username: </strong><input type="text" class="form-control" name="username" placeholder="username">
+                                <select name="username">
+                                    {players}
+                                        <option value="{Player}">{Player}</option>
+                                    {/players}
+                                </select>
 						    	<input type="submit" class="btn btn-info btn-md" value="Login">
 						    </div>
 						<form> 

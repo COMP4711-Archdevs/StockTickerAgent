@@ -17,6 +17,9 @@ class Portfolio extends Application {
 
     	$this->data['title'] = "Portfolio page";
         
+    	$results2 = $this->player->all();
+        $this->data['players'] = $results2;
+        
         $this->data['pagebody'] = 'portfolio_page';
         if($this->session->userdata('logged_in')){
              $session_data = $this->session->userdata('logged_in');

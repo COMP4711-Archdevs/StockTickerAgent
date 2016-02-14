@@ -1,6 +1,6 @@
-<h2>Stocks</h2>
+<h3>Stocks</h3>
 
-<table align="center" style="width:25%">
+<table align="center" style="width:25%" class="table table-bordered">
     <tr style="font-weight: bold">
         <td>Name</td>
         <td>Code</td>
@@ -15,11 +15,9 @@
     {/stocks}
 </table>
 
-<hr/>
+<h3>Players</h3>
 
-<h2>Players</h2>
-
-<table align="center" style="width:25%">
+<table align="center" style="width:25%" class="table table-bordered">
     <tr style="font-weight: bold">
         <td>Player</td>
         <td>Cash</td>

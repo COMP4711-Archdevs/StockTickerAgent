@@ -26,6 +26,8 @@ class Home extends Application {
         $this->stocks();
         $this->players();
         $this->data['pagebody'] = 'home_page';
+
+        //Check user login, display menubar
         if($this->session->userdata('logged_in')){
              $session_data = $this->session->userdata('logged_in');
              $this->data['user'] = $session_data['name'];
@@ -33,7 +35,6 @@ class Home extends Application {
         }
         else{
             $this->data['menubody'] = 'menucontent_login';
-             //If no session, redirect to login page
         }
         $this->render();
     }

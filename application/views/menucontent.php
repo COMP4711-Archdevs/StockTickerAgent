@@ -19,14 +19,14 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="Home">Home</a>
+                        <a class="page-scroll" href="/Home">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="History">History</a>
+                        <a class="page-scroll" href="/History">History</a>
                     </li>
                     <li>
                         <h5>Welcome back {user}</h5>
-                        <a href="home/logout">Logout</a>
+                        <a href="/Home/logout">Logout</a>
                     </li>
                 </ul>
             </div>

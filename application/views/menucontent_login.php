@@ -18,13 +18,13 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="Home">Home</a>
+                        <a class="page-scroll" href="/Home">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="History">History</a>
+                        <a class="page-scroll" href="/History">History</a>
                     </li>
                     <li>
-                        <form action="home/login" method="post">
+                        <form action="/Home/login" method="post">
 						    <div class = "form-group form-inline control-group info">
 						        <strong>Username: </strong><input type="text" class="form-control" name="username" placeholder="username">
 						    	<input type="submit" class="btn btn-info btn-md" value="Login">

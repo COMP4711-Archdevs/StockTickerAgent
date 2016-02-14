@@ -59,6 +59,30 @@ class History extends Application {
         $this->render();
     }
     
+    function display($stock){
+        $target = $stock;
+        $this->data['title'] = "History";
+
+        $results2 = $this->player->all();
+        $this->data['players'] = $results2;
+
+        $this->data['pagebody'] = 'history_page';
+        if($this->session->userdata('logged_in')){
+             $session_data = $this->session->userdata('logged_in');
+             $this->data['user'] = $session_data['name'];
+             $this->data['menubody'] = 'menucontent';
+        }
+        else{
+            $this->data['menubody'] = 'menucontent_login';
+        }
+        
+        $this->get_movements($target);
+        $this->get_transactions($target);
+        $this->create_dropdown($target);
+        
+        $this->render();
+    }
+    
     function get_transactions($target){
         $transResult = $this->transaction->some("Stock", $target);
         $this->data['transactions'] = $transResult;

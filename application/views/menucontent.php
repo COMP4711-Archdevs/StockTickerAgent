@@ -19,7 +19,7 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">Stocks</a>
+                        <a class="page-scroll" href="Home">Home</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="History">History</a>

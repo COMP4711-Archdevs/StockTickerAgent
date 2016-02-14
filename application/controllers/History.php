@@ -34,9 +34,20 @@ class History extends Application {
         }
         $this->data['title'] = "History";
         $this->data['pagebody'] = 'history_page';
-        $session_data = $this->session->userdata('logged_in');
-        $this->data['user'] = $session_data['name'];
-        $this->data['menubody'] = 'menucontent';
+//        
+//        $session_data = $this->session->userdata('logged_in');
+//        $this->data['user'] = $session_data['name'];
+//        $this->data['menubody'] = 'menucontent';
+
+        if($this->session->userdata('logged_in')){
+             $session_data = $this->session->userdata('logged_in');
+             $this->data['user'] = $session_data['name'];
+             $this->data['menubody'] = 'menucontent';
+        }
+        else{
+            $this->data['menubody'] = 'menucontent_login';
+        }
+        
         $this->get_movements($target);
         $this->get_transactions($target);
         $this->create_dropdown($target);

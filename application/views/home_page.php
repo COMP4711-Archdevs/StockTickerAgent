@@ -8,7 +8,7 @@
     </tr>
     {stocks}
         <tr>
-            <td>{Name}</td>
+            <td><a href="/History/display/{Code}">{Name}</a></td>
             <td>{Code}</td>
             <td>{Value}</td>
         </tr>

@@ -2,6 +2,13 @@
     {playerdropdown}
 </form>
 
+<select onchange="location = this.options[this.selectedIndex].value;">
+        <option value="#">Select player</option>
+    {players}
+        <option value="/Portfolio/detail/{Player}">{Player}</option>
+    {/players}
+</select>
+
 <h2>Players transactions</h2>
 
 <table align="center" style="width:25%">

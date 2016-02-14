@@ -1,3 +1,7 @@
+<form action="Player" method="post">
+    {playerdropdown}
+</form>
+
 <h2>Players transactions</h2>
 
 <table align="center" style="width:25%">

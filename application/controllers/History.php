@@ -20,17 +20,10 @@ class History extends Application {
             $target = $_POST['stocks'];
         } else {
             // set to display most recently traded stock
-//            $this->db->select('Name')->from('Stocks')->join('Transactions', "Stocks.Code = Transactions.Stock");
-//            $this->db->order_by('DateTime');
-//            $result = $this->db->get()->row();
-//            foreach($result as $stock){
-//                foreach($stock as $s){
-//                    $target = $s;
-//                    break;
-//                }
-//                break;
-//            }
-            $target = "BOND";
+            $this->db->select('Stock')->from('Transactions');
+            $this->db->order_by('DateTime');
+            $result = $this->db->get()->row();
+            $target = $result->Stock;
         }
         $this->data['title'] = "History";
 

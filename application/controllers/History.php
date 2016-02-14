@@ -14,30 +14,49 @@ class History extends Application {
     }
     
     function index(){
+        $target = "";
+        if(isset($_POST['stocks'])){
+            // set to display content of selected stock
+            $target = $_POST['stocks'];
+        } else {
+            // set to display most recently traded stock
+//            $this->db->select('Name')->from('Stocks')->join('Transactions', "Stocks.Code = Transactions.Stock");
+//            $this->db->order_by('DateTime');
+//            $result = $this->db->get()->row();
+//            foreach($result as $stock){
+//                foreach($stock as $s){
+//                    $target = $s;
+//                    break;
+//                }
+//                break;
+//            }
+            $target = "BOND";
+        }
         $this->data['title'] = "History";
         $this->data['pagebody'] = 'history_page';
         $session_data = $this->session->userdata('logged_in');
         $this->data['user'] = $session_data['name'];
         $this->data['menubody'] = 'menucontent';
-        $this->get_movements();
-        $this->get_transactions();
-        $this->create_dropdown();
+        $this->get_movements($target);
+        $this->get_transactions($target);
+        $this->create_dropdown($target);
         
         $this->render();
     }
     
-    function get_transactions(){
-        $transResult = $this->transaction->all();
+    function get_transactions($target){
+        $transResult = $this->transaction->some("Stock", $target);
         $this->data['transactions'] = $transResult;
     }
     
-    function get_movements(){
-        $movResult = $this->movement->all();
+    function get_movements($target){
+        $movResult = $this->movement->some("Code", $target);
         $this->data['movements'] = $movResult;
     }
     
-    function create_dropdown(){
-        $this->db->select('Name')->from('Stocks');
+    function create_dropdown($target){
+        // parse the list of stock names into an array
+        $this->db->select('Code')->from('Stocks');
         $result = $this->db->get()->result_array();
         $stocks = array();
         foreach($result as $stock){
@@ -45,7 +64,10 @@ class History extends Application {
                 $stocks[$s] = $s;
             }
         }
-        $this->data['historydropdown'] = form_dropdown("name", $stocks, null);
+        // allow each option to pass a post value
+        $option = "onchange='this.form.submit()'";
+        // create a select field consisting of the stock names
+        $this->data['historydropdown'] = form_dropdown("stocks", $stocks, $target, $option);
     }
     
 }

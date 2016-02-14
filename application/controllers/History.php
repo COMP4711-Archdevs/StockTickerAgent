@@ -33,6 +33,10 @@ class History extends Application {
             $target = "BOND";
         }
         $this->data['title'] = "History";
+
+        $results2 = $this->player->all();
+        $this->data['players'] = $results2;
+
         $this->data['pagebody'] = 'history_page';
 //        
 //        $session_data = $this->session->userdata('logged_in');

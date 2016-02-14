@@ -25,6 +25,9 @@
                         <a class="page-scroll" href="/History">History</a>
                     </li>
                     <li>
+                        <a class="page-scroll" href="/Portfolio/detail/{user}">Porfolio</a>
+                    </li>
+                    <li>
                         <h5>Welcome back {user}</h5>
                         <a href="/Home/logout">Logout</a>
                     </li>

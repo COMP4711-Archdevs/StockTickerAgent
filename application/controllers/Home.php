@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Home
  *
@@ -18,13 +12,14 @@ class Home extends Application {
     }
     
     function index(){
-        $results = $this->stock->all();
-        $results2 = $this->player->all();
         
         $this->data['title'] = "Stock Ticker Agent";
         
+        // Get stock data
         $this->stocks();
+        // Get player data
         $this->players();
+
         $this->data['pagebody'] = 'home_page';
 
         //Check user login, display menubar
@@ -39,31 +34,36 @@ class Home extends Application {
         $this->render();
     }
     
+    // Get data from stock model
     function stocks(){
         $results = $this->stock->all();
         $this->data['stocks'] = $results;
-        //$this->data['stockcontent'] = '_stockpanel';
     }
     
+    //Get player data from player model
     function players(){
         $results2 = $this->player->all();
         $this->data['players'] = $results2;
-        //$this->data['playercontent'] = '_playerpanel';
     }
 
+    //Login user in
     function login(){
         $username = $this->input->post('username');
 
+        // Save session
         $sess_array = array(
             'id'    => 1,
             'name' => $username,
             'isloggedin'=> 1
         );
         $this->session->set_userdata('logged_in', $sess_array);
+        
         redirect('home', 'refresh');
     }
 
+    //Log user out
     function logout(){
+        // Unset session and destroy
         $this->session->unset_userdata('logged_in');
         session_destroy();
         redirect('home', 'refresh');

@@ -7,18 +7,26 @@ class Portfolio extends Application {
         parent::__construct();
     }
 
+    /*
+        Get data from transaction model and load pagebody with its data
+    */
     function detail($player){
     	
         if(isset($_POST['players'])){
             $player = $_POST['players'];
         }
         
+        //Get all data from transaction table base on player name
     	$this->data['details'] = $this->transaction->some('player',$player);
 
+        //Set title
     	$this->data['title'] = "Portfolio";
         
+        //Get list of player for dropdown menu
     	$results2 = $this->player->all();
         $this->data['players'] = $results2;
+
+        //Load page body
         $this->data['pagebody'] = 'portfolio_page';
 
         //Check user login, display menubar

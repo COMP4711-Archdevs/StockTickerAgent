@@ -24,6 +24,9 @@
                         <a class="page-scroll" href="/History">History</a>
                     </li>
                     <li>
+                        <a class="page-scroll" href="/Portfolio/detail/Henry">Porfolio</a>
+                    </li>
+                    <li>
                         <form action="/Home/login" method="post">
 						    <div class = "form-group form-inline control-group info">
                                 <select name="username">

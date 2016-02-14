@@ -1,17 +1,22 @@
-<form action="Player" method="post">
+<!-- <form action="Player" method="post">
     {playerdropdown}
 </form>
+ -->
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+        <select onchange="location = this.options[this.selectedIndex].value;" class="center input-sm">
+                <option value="#">Select player</option>
+            {players}
+                <option value="/Portfolio/detail/{Player}">{Player}</option>
+            {/players}
+        </select>
+    </div>
+</div>
 
-<select onchange="location = this.options[this.selectedIndex].value;">
-        <option value="#">Select player</option>
-    {players}
-        <option value="/Portfolio/detail/{Player}">{Player}</option>
-    {/players}
-</select>
 
-<h2>Players transactions</h2>
+<h3>Players transactions</h3>
 
-<table align="center" style="width:25%">
+<table align="center" style="width:25%" class="table table-bordered">
     <tr style="font-weight: bold">
         <td>Player</td>
         <td>Date Time</td>

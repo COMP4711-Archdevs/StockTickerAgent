@@ -28,7 +28,7 @@ if (!defined('APPPATH'))
     <!-- Navigation -->
     {menucontent}
     <!-- Intro Section -->
-    <section id="intro" class="intro-section"  style="background: url('/img/pattern.png');">
+    <section id="intro" class="intro-section" style="background: url('/img/pattern.png');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" id="content">

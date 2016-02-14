@@ -2,9 +2,9 @@
     {historydropdown}
 </form>
 
-<h2>Movement</h2>
+<h3>Movement</h3>
 
-<table align="center" style="width:25%">
+<table align="center" style="width:25%" class="table table-bordered">
     <tr style="font-weight: bold">
         <td>Action</td>
         <td>Amount</td>
@@ -17,9 +17,9 @@
     {/movements}
 </table>
 
-<h2>Transactions</h2>
+<h3>Transactions</h3>
 
-<table align="center" style="width:25%">
+<table align="center" style="width:25%" class="table table-bordered">
     <tr style="font-weight: bold">
         <td>Transaction</td>
         <td>Quantity</td>

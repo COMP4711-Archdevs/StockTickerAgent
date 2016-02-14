@@ -15,12 +15,13 @@ class Portfolio extends Application {
         
     	$this->data['details'] = $this->transaction->some('player',$player);
 
-    	$this->data['title'] = "Portfolio page";
+    	$this->data['title'] = "Portfolio";
         
     	$results2 = $this->player->all();
         $this->data['players'] = $results2;
-        
         $this->data['pagebody'] = 'portfolio_page';
+
+        //Check user login, display menubar
         if($this->session->userdata('logged_in')){
              $session_data = $this->session->userdata('logged_in');
              $this->data['user'] = $session_data['name'];

@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">{title}</a>
+                <h2><small>{title}</small></h2>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,12 +29,12 @@
                     <li>
                         <form action="/Home/login" method="post">
 						    <div class = "form-group form-inline control-group info">
-                                <select name="username">
+                                <select name="username" class="form-control input-sm">
                                     {players}
                                         <option value="{Player}">{Player}</option>
                                     {/players}
                                 </select>
-						    	<input type="submit" class="btn btn-info btn-md" value="Login">
+						    	<input type="submit" class="btn btn-default btn-sm" value="Login">
 						    </div>
 						<form> 
                     </li>

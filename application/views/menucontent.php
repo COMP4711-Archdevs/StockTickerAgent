@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">{title}</a>
+                <h2><small>{title}</small></h2>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,7 +28,9 @@
                         <a class="page-scroll" href="/Portfolio/detail/{user}">Porfolio</a>
                     </li>
                     <li>
-                        <h5>Welcome back {user}</h5>
+                        <h6>Welcome back {user}</h6>
+                    </li>
+                    <li>
                         <a href="/Home/logout">Logout</a>
                     </li>
                 </ul>

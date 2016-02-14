@@ -26,7 +26,7 @@
     </tr>
     {players}
         <tr>
-            <td>{Player}</td>
+            <td href="/Portfolio/detail/{Player}"><a href="/Portfolio/detail/{Player}">{Player}</a></td>
             <td>{Cash}</td>
         </tr>
     {/players}

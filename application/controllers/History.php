@@ -61,6 +61,12 @@ class History extends Application {
     
     function display($stock){
         $target = $stock;
+        
+        if(isset($_POST['stocks'])){
+            // set to display content of selected stock
+            $target = $_POST['stocks'];
+        }
+        
         $this->data['title'] = "History";
 
         $results2 = $this->player->all();

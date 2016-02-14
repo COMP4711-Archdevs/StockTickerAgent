@@ -1,4 +1,6 @@
-{historydropdown}
+<form action="History" method="post">
+    {historydropdown}
+</form>
 
 <h2>Movement</h2>
 

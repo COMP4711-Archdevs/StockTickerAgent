@@ -28,10 +28,10 @@
                         <a class="page-scroll" href="/Portfolio/detail/{user}">Porfolio</a>
                     </li>
                     <li>
-                        <h6>Welcome back {user}</h6>
+                        <a href="/Home/logout">Logout</a>
                     </li>
                     <li>
-                        <a href="/Home/logout">Logout</a>
+                        <a href="">Welcome back {user}</a>
                     </li>
                 </ul>
             </div>

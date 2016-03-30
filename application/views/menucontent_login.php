@@ -24,9 +24,12 @@
                         <a class="page-scroll" href="/History">History</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/Portfolio/detail/Henry">Porfolio</a>
+                        <a class="page-scroll" href="/Portfolio/detail/Henry">Portfolio</a>
                     </li>
                     <li>
+                        <a class="page-scroll" href="">Login</a>
+                    </li>
+<!--                <li>
                         <form action="/Home/login" method="post">
 						    <div class = "form-group form-inline control-group info">
                                 <select name="username" class="form-control input-sm">
@@ -37,6 +40,9 @@
 						    	<input type="submit" class="btn btn-default btn-sm" value="Login">
 						    </div>
 						<form> 
+                    </li>-->
+                    <li>
+                        <a class="page-scroll" href="/Register">Register</a>
                     </li>
                 </ul>
             </div>

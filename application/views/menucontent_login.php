@@ -27,7 +27,7 @@
                         <a class="page-scroll" href="/Portfolio/detail/Henry">Portfolio</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="">Login</a>
+                        <a class="page-scroll" href="/Login">Login</a>
                     </li>
 <!--                <li>
                         <form action="/Home/login" method="post">

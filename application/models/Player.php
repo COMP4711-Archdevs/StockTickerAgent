@@ -16,5 +16,11 @@ class Player extends MY_Model {
     function __construct() {
         parent::__construct('players','cash');
     }
+    
+    //insert into user table
+    function insertUser($data)
+    {
+        return $this->db->insert('players', $data);
+    }
 
 }

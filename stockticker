@@ -78,6 +78,7 @@ INSERT INTO `movements` (`Datetime`, `Code`, `Action`, `Amount`) VALUES
 DROP TABLE IF EXISTS `players`;
 CREATE TABLE IF NOT EXISTS `players` (
   `Player` varchar(6) DEFAULT NULL,
+  `password` varchar(40) NOT NULL,
   `Cash` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -85,11 +86,11 @@ CREATE TABLE IF NOT EXISTS `players` (
 -- Dumping data for table `players`
 --
 
-INSERT INTO `players` (`Player`, `Cash`) VALUES
-('Mickey', 1000),
-('Donald', 3000),
-('George', 2000),
-('Henry', 2500);
+INSERT INTO `players` (`Player`, `password`, `Cash`) VALUES
+('Mickey', 'password' , 1000),
+('Donald', 'password', 3000),
+('George', 'password', 2000),
+('Henry', 'password', 2500);
 
 -- --------------------------------------------------------
 

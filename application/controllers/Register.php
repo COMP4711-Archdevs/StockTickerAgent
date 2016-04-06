@@ -33,7 +33,6 @@ class Register extends Application{
     {
         //set validation rules
         $this->form_validation->set_rules('fname', 'First Name', 'trim|required|alpha|min_length[3]|max_length[30]|xss_clean');
-        $this->form_validation->set_rules('lname', 'Last Name', 'trim|required|alpha|min_length[3]|max_length[30]|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[cpassword]|md5');
         $this->form_validation->set_rules('cpassword', 'Confirm Password', 'trim|required');
         
@@ -51,13 +50,13 @@ class Register extends Application{
         {
             //insert the user registration details into database
             $data = array(
-                'fname' => $this->input->post('fname'),
-                'lname' => $this->input->post('lname'),
-                'password' => $this->input->post('password')
+                'Player' => $this->input->post('fname'),
+                'password' => $this->input->post('password'),
+                'Cash'  => 1000,
             );
             
             // insert form data into database
-            if ($this->user->insertUser($data))
+            if ($this->player->insertUser($data))
             {
                 // successfully registered
                 $this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered!</div>');

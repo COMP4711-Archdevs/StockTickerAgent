@@ -29,12 +29,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="name">Last Name</label>
-                    <input class="form-control" name="lname" placeholder="Last Name" type="text" value="<?php echo set_value('lname'); ?>" />
-                    <span class="text-danger"><?php echo form_error('lname'); ?></span>
-                </div>
-
-                <div class="form-group">
                     <label for="subject">Password</label>
                     <input class="form-control" name="password" placeholder="Password" type="password" />
                     <span class="text-danger"><?php echo form_error('password'); ?></span>

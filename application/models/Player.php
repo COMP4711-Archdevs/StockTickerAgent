@@ -22,5 +22,11 @@ class Player extends MY_Model {
     {
         return $this->db->insert('players', $data);
     }
+    
+    public function isDuplicate($name)
+    {     
+        $this->db->get_where('players', array('player' => $name), 1);
+        return $this->db->affected_rows() > 0 ? TRUE : FALSE;         
+    }
 
 }

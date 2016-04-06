@@ -87,10 +87,10 @@ CREATE TABLE IF NOT EXISTS `players` (
 --
 
 INSERT INTO `players` (`Player`, `password`, `Cash`) VALUES
-('Mickey', 'password' , 1000),
-('Donald', 'password', 3000),
-('George', 'password', 2000),
-('Henry', 'password', 2500);
+('Mickey', '5f4dcc3b5aa765d61d8327deb882cf99' , 1000),
+('Donald', '5f4dcc3b5aa765d61d8327deb882cf99', 3000),
+('George', '5f4dcc3b5aa765d61d8327deb882cf99', 2000),
+('Henry', '5f4dcc3b5aa765d61d8327deb882cf99', 2500);
 
 -- --------------------------------------------------------
 

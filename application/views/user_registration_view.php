@@ -23,7 +23,7 @@
                 <?php $attributes = array("name" => "registrationform");
                 echo form_open("Register/register", $attributes);?>
                 <div class="form-group">
-                    <label for="name">First Name</label>
+                    <label for="name">Username</label>
                     <input class="form-control" name="fname" placeholder="Your First Name" type="text" value="<?php echo set_value('fname'); ?>" />
                     <span class="text-danger"><?php echo form_error('fname'); ?></span>
                 </div>

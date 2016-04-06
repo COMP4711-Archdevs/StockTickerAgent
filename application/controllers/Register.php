@@ -48,25 +48,33 @@ class Register extends Application{
         }
         else
         {
-            //insert the user registration details into database
-            $data = array(
-                'Player' => $this->input->post('fname'),
-                'password' => $this->input->post('password'),
-                'Cash'  => 1000,
-            );
-            
-            // insert form data into database
-            if ($this->player->insertUser($data))
-            {
-                // successfully registered
-                $this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered!</div>');
-                redirect('/Register');
-            }
-            else
-            {
-                // error
-                $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Oops! Error.  Please try again later!!!</div>');
-                redirect('/Register');
+            if($this->player->isDuplicate($this->input->post('fname'))){
+                    $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Oops! That username is taken!</div>');
+                    $this->data['title'] = "Register";
+                    $this->data['pagebody'] = 'user_registration_view';
+                    $this->data['menubody'] = 'menucontent_login';
+                    $this->render();
+            }else{
+                //insert the user registration details into database
+                $data = array(
+                    'Player' => $this->input->post('fname'),
+                    'password' => $this->input->post('password'),
+                    'Cash'  => 1000,
+                );
+
+                // insert form data into database
+                if ($this->player->insertUser($data))
+                {
+                    // successfully registered
+                    $this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered!</div>');
+                    redirect('/Register');
+                }
+                else
+                {
+                    // error
+                    $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Oops! Error.  Please try again later!!!</div>');
+                    redirect('/Register');
+                }
             }
         }
     }

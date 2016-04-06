@@ -3,14 +3,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register User</title>
-    <link href="<?php echo base_url("bootstrap/css/bootstrap.css"); ?>" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="container">
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <?php echo $this->session->flashdata('verify_msg'); ?>
-    </div>
+    <div class="col-md-6 col-md-offset-3"></div>
 </div>
 
 <div class="row">
@@ -20,32 +18,30 @@
                 <h4>User Registration</h4>
             </div>
             <div class="panel-body">
-                <?php $attributes = array("name" => "registrationform");
-                echo form_open("Register/register", $attributes);?>
-                <div class="form-group">
-                    <label for="name">Username</label>
-                    <input class="form-control" name="fname" placeholder="Your First Name" type="text" value="<?php echo set_value('fname'); ?>" />
-                    <span class="text-danger"><?php echo form_error('fname'); ?></span>
-                </div>
+                <form action="/Register/register" name="registrationform" method="post" accept-charset="utf-8">
+                    <div class="form-group">
+                        <label for="name">Username</label>
+                        <input class="form-control" name="fname" placeholder="Your First Name" type="text" />
+                        <span class="text-danger"></span>
+                    </div>
 
-                <div class="form-group">
-                    <label for="subject">Password</label>
-                    <input class="form-control" name="password" placeholder="Password" type="password" />
-                    <span class="text-danger"><?php echo form_error('password'); ?></span>
-                </div>
+                    <div class="form-group">
+                        <label for="subject">Password</label>
+                        <input class="form-control" name="password" placeholder="Password" type="password" />
+                        <span class="text-danger"></span>
+                    </div>
 
-                <div class="form-group">
-                    <label for="subject">Confirm Password</label>
-                    <input class="form-control" name="cpassword" placeholder="Confirm Password" type="password" />
-                    <span class="text-danger"><?php echo form_error('cpassword'); ?></span>
-                </div>
+                    <div class="form-group">
+                        <label for="subject">Confirm Password</label>
+                        <input class="form-control" name="cpassword" placeholder="Confirm Password" type="password" />
+                        <span class="text-danger"></span>
+                    </div>
 
-                <div class="form-group">
-                    <button name="submit" type="submit" class="btn btn-default">Signup</button>
-                    <button name="cancel" type="reset" class="btn btn-default">Cancel</button>
-                </div>
-                <?php echo form_close(); ?>
-                <?php echo $this->session->flashdata('msg'); ?>
+                    <div class="form-group">
+                        <button name="submit" type="submit" class="btn btn-default">Signup</button>
+                        <button name="cancel" type="reset" class="btn btn-default">Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

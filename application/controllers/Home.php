@@ -36,7 +36,7 @@ class Home extends Application {
     
     // Get data from stock model
     function stocks(){
-        $results = $this->stock->all();
+        $results = $this->stock->getAllStocksFromServer();
         $this->data['stocks'] = $results;
     }
     

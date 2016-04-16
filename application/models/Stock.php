@@ -11,9 +11,9 @@ class Stock extends MY_Model {
         parent::__construct('stocks','code');
     }
 
-     function getAllStocksFromServer(){
-       $allStockData = $this->readFromURL("http://bsx.jlparry.com/data/stocks");
-        
+     public function getAllStocksFromServer(){
+      // $allStockData = $this->readFromURL("http://bsx.jlparry.com/data/stocks");
+        $allStockData = $this->readFromURL("http://www.comp4711bsx.local/data/stocks");
        $allStock = array();
 
        for($i = 1; $i < count($allStockData); $i++){
@@ -29,8 +29,60 @@ class Stock extends MY_Model {
         return $allStock; 
     }
 
+    public function getAllMovementOfOneStock($stock){
+        //$stockMovements = $this->readFromURL("http://bsx.jlparry.com/data/Movement");
+        $stockMovements = $this->readFromURL("http://www.comp4711bsx.local/data/Movement");
+       
+        $stockMovementList = array();
 
+         for($i = 1; $i < count($stockMovements); $i++){
+             if($stockMovements[$i][2] == $stock){
+                $stockInfo = array();
+                
+                $stockInfo["Datetime"] = $stockMovements[$i][1];
+                $stockInfo["Code"] = $stockMovements[$i][2];
+                $stockInfo["Action"] = $stockMovements[$i][3];
+                $stockInfo["Amount"] = $stockMovements[$i][4];
+                
+                array_push($stockMovementList,$stockInfo);
+            }
+        } 
 
+        return $stockMovementList;
+   }
+
+  public function getAllTransactionOfOneStock($stock){
+        //$stockMovements = $this->readFromURL("http://bsx.jlparry.com/data/Movement");
+        $stockMovements = $this->readFromURL("http://www.comp4711bsx.local/data/transactions");
+       
+        $stockMovementList = array();
+
+         for($i = 1; $i < count($stockMovements); $i++){
+             if($stockMovements[$i][2] == $stock){
+                $stockInfo = array();
+                
+                $stockInfo["Datetime"] = $stockMovements[$i][1];
+                $stockInfo["Agent"] = $stockMovements[$i][2];
+                $stockInfo["Player"] = $stockMovements[$i][3];
+                $stockInfo["Stock"] = $stockMovements[$i][4];
+                $stockInfo["Trans"] = $stockMovements[$i][5];
+                $stockInfo["Quantity"] = $stockMovements[$i][6];
+
+                array_push($stockMovementList,$stockInfo);
+            }
+        } 
+        $stockInfo = array();
+                
+                $stockInfo["Datetime"] = "dummy data";
+                $stockInfo["Agent"] = "Clyde";
+                $stockInfo["Player"] = "HHH";
+                $stockInfo["Stock"] = "Cocaine";
+                $stockInfo["Trans"] = "$$$";
+                $stockInfo["Quantity"] = "100kg";
+
+                array_push($stockMovementList,$stockInfo);
+        return $stockMovementList;
+   }
 
 
 

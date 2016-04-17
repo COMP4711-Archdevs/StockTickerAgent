@@ -37,7 +37,7 @@ class Player extends MY_Model {
         $query = $this->db->get_where('players', array('Player' => $name));
         return $query->result();
     }
-    
+
     function updateUser($player, $data){
         if($this->db->update('players', $data, array('Player' => $player))){
             return true;

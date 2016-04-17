@@ -115,11 +115,11 @@ public function getRecentMovements(){
        $stockMovementList = array();
        
         for($i = 1; $i < count($stockMovements); $i++){
-                  if(count($stockMovementList) >= 5){
+            if(count($stockMovementList) >= 5){
                 break;
                 }
             
-            $tempStockList = array();
+            $stockInfo = array();
                 $stockInfo["Datetime"] = $stockMovements[$i][1];
                 $stockInfo["Agent"] = $stockMovements[$i][2];
                 $stockInfo["Player"] = $stockMovements[$i][3];
@@ -127,7 +127,7 @@ public function getRecentMovements(){
                 $stockInfo["Trans"] = $stockMovements[$i][5];
                 $stockInfo["Quantity"] = $stockMovements[$i][6];
             
-            array_push($stockMovementList,$tempStockList);
+            array_push($stockMovementList,$stockInfo);
        }
        
        return $stockMovementList;

@@ -79,15 +79,16 @@ class Gameplay extends Application {
     // register to bsx server
     function register(){
         // check game state = ready or open
-        if(1){
+        $status = $this->getStatus();
+        if($status->state == 2 || $status->state == 3){
             // send post request to bsx/register
             $fields = array(
                 "team" => "S10",
                 "name" => "ArchDevs",
                 "password" => "tuesday",
             );
-            $response = $this->sendPost("serverUrl", $fields);
-            // parse the response and do something with it ex. save token
+            $response = $this->sendPost("http://bsx.jlparry.com", $fields);
+            // save the token returned in response !!!
             
             
         }
@@ -96,19 +97,23 @@ class Gameplay extends Application {
     // buying a stock of quantity x
     function buy($stock, $quantity){
         // check if current player has enough funds to buy
-        // ex. player fund > stock price * quantity
-        if(1){
+        $fund = 0; //!!!
+        $cost = $stock * $quantity;
+        if($fund > $cost){
             // check game state = ready or open
-            if(1){
+            $status = $this->getStatus();
+            if($status->state == 2 || $status->state == 3){
                 $fields = array(
                     "team" => "S10",
-                    "token" => 123, // update these
+                    "token" => 123, // update these !!!
                     "player" => 123,
                     "stock" => $stock,
                     "quantity" => $quantity,
                 );
-                $response = $this->sendPost("serverUrl"."buy", $fields);
-                // parse the response and do something with it ex. save token
+                $response = $this->sendPost("http://bsx.jlparry.com/buy", $fields);
+                // subtract cost from player's fund and update !!!
+                
+                // save transaction into db !!!
 
                 return 1;
             }
@@ -118,10 +123,12 @@ class Gameplay extends Application {
     
     // selling x amount of a stock
     function sell($stock, $quantity){
-        // check if player has enough of the stock
-        if(1){
+        // check if player has enough of the stock !!!
+        $holding = $this->game->some('username',$session_data['name']);
+        if($holding > $quantity){
             // check game state = ready or open
-            if(1){
+            $status = $this->getStatus();
+            if($status->state == 2 || $status->state == 3){
                 $fields = array(
                     "team" => 'S10',
                     "token" => 123, // update these
@@ -130,10 +137,13 @@ class Gameplay extends Application {
                     "quantity" => $quantity,
                     "certificate" => 123,
                 );
-                $response = $this->sendPost("serverUrl"."sell", $fields);
-                // parse the response and do something with it
-
+                $response = $this->sendPost("http://bsx.jlparry.com/sell", $fields);
+                // update user holding for this stock !!!
+                
+                // save transaction into db !!!
+                
                 return 1;
+                
             }
         }
         return 0;

@@ -66,4 +66,26 @@ class Player extends MY_Model {
       }
     }
 
+    public function getFund($name){
+        $sql = "SELECT Cash FROM players WHERE Player= '{$name}' LIMIT 1";
+        $result = $this->db->query($sql);
+        $row = $result->row();
+
+        return ($result->num_rows() === 1 && $row->Cash) ? $row->Cash : false;
+    }
+
+    public function updateFund($name,$money){
+      $current = $this->getFund($name);
+      $temp = $current + $money;
+      $sql = "UPDATE players SET Cash = '{$temp}' WHERE Player = '{$name}' LIMIT 1";
+      $result = $this->db->query($sql);
+      $affected_rows = $this->db->affected_rows();
+      
+      if($affected_rows <= 1){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
 }

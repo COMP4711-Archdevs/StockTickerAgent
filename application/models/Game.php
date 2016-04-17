@@ -14,4 +14,19 @@ class Game extends MY_Model {
 
 	return ($result->num_rows() === 1 && $row->quantity) ? $row->quantity : false;
     }
+
+    public function updateStockQuantityBelongToPlayer($player,$code,$quantity){
+        $current = $this->getStockQuantityBelongToPlayer($player,$code);
+        $temp = $current + $quantity;
+        $sql = "UPDATE holdingstock SET quantity = '{$temp}' WHERE username = '{$player}' AND stockcode = '{$code}' LIMIT 1";
+        $result = $this->db->query($sql);
+        $affected_rows = $this->db->affected_rows();
+    
+        if($affected_rows <= 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

@@ -10,44 +10,46 @@
   </ul>
 </div>
 
-<h3>Stock Movement</h3>
+<div class = "row">
+        <h3 align="left">Stock Movement</h3>
 
-<table align="center" style="width:25%" class="table table-bordered">
-    <tr style="font-weight: bold">
-        <td>Code</td>
-        <td>Time</td>
-        <td>Action</td>
-        <td>Amount</td>
-    </tr>
-    {stockMovements}
-        <tr>
-            <td>{Code}</td>
-            <td>{Datetime}</td>
-            <td>{Action}</td>
-            <td>{Amount}</td>
+        <table align="left" style="width:35%" class="table table-bordered">
+        <tr style="font-weight: bold">
+            <td>Code</td>
+            <td>Time</td>
+            <td>Action</td>
+            <td>Amount</td>
         </tr>
-    {/stockMovements}
-</table>
+        {stockMovements}
+            <tr>
+                <td>{Code}</td>
+                <td>{Datetime}</td>
+                <td>{Action}</td>
+                <td>{Amount}</td>
+            </tr>
+        {/stockMovements}
+        </table>
 
-<h3>Transactions</h3>
+        <h3 align="right">Stock Transactions</h3>
 
-<table align="center" style="width:25%" class="table table-bordered">
-    <tr style="font-weight: bold">
-        <td>Date time</td>
-        <td>Agent</td>
-        <td>Player</td>
-        <td>Stock</td>
-        <td>Transaction</td>
-        <td>Quantity</td>
-    </tr>
-    {stockTransactions}
-        <tr>
-            <td>{Datetime}</td>
-            <td>{Agent}</td>
-            <td>{Player}</td>
-            <td>{Stock}</td>
-            <td>{Trans}</td>
-            <td>{Quantity}</td>
-        </tr>
-    {/stockTransactions}
-</table>
+                <table align="right" style="width:35%" class="table table-bordered">
+            <tr style="font-weight: bold">
+                <td>Date time</td>
+                <td>Agent</td>
+                <td>Player</td>
+                <td>Stock</td>
+                <td>Transaction</td>
+                <td>Quantity</td>
+            </tr>
+            {stockTransactions}
+                <tr>
+                    <td>{Datetime}</td>
+                    <td>{Agent}</td>
+                    <td>{Player}</td>
+                    <td>{Stock}</td>
+                    <td>{Trans}</td>
+                    <td>{Quantity}</td>
+                </tr>
+            {/stockTransactions}
+        </table>
+</div>

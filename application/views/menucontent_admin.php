@@ -28,6 +28,9 @@
                         <a class="page-scroll" href="/Portfolio/detail/{user}">Porfolio</a>
                     </li>
                     <li>
+                        <a class="page-scroll" href="/Admin">Manage Users</a>
+                    </li>
+                    <li>
                         <a href="/Home/logout">Logout</a>
                     </li>
                     <li>

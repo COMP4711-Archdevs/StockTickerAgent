@@ -79,18 +79,19 @@ DROP TABLE IF EXISTS `players`;
 CREATE TABLE IF NOT EXISTS `players` (
   `Player` varchar(6) DEFAULT NULL,
   `password` varchar(40) NOT NULL,
-  `Cash` int(4) DEFAULT NULL
+  `Cash` int(4) DEFAULT NULL,
+  `role` VARCHAR(20) NOT NULL DEFAULT 'player'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `players`
 --
 
-INSERT INTO `players` (`Player`, `password`, `Cash`) VALUES
-('Mickey', '5f4dcc3b5aa765d61d8327deb882cf99' , 1000),
-('Donald', '5f4dcc3b5aa765d61d8327deb882cf99', 3000),
-('George', '5f4dcc3b5aa765d61d8327deb882cf99', 2000),
-('Henry', '5f4dcc3b5aa765d61d8327deb882cf99', 2500);
+INSERT INTO `players` (`Player`, `password`, `Cash`, `role`) VALUES
+('Mickey', '5f4dcc3b5aa765d61d8327deb882cf99' , 1000, 'admin'),
+('Donald', '5f4dcc3b5aa765d61d8327deb882cf99', 3000, 'player'),
+('George', '5f4dcc3b5aa765d61d8327deb882cf99', 2000, 'player'),
+('Henry', '5f4dcc3b5aa765d61d8327deb882cf99', 2500, 'player');
 
 -- --------------------------------------------------------
 

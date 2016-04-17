@@ -12,7 +12,6 @@ class Home extends Application {
     }
     
     function index(){
-        
         $this->data['title'] = "Stock Ticker Agent";
         
         // Get stock data
@@ -22,11 +21,21 @@ class Home extends Application {
 
         $this->data['pagebody'] = 'home_page';
 
+        $session_data = $this->session->userdata('logged_in');
+        
         //Check user login, display menubar
         if($this->session->userdata('logged_in')){
-             $session_data = $this->session->userdata('logged_in');
-             $this->data['user'] = $session_data['name'];
-             $this->data['menubody'] = 'menucontent';
+            if($session_data['role'] == 'admin'){
+                $session_data = $this->session->userdata('logged_in');
+                $this->data['user'] = $session_data['name'];
+                $this->data['menubody'] = 'menucontent_admin';
+                $this->data['avatar'] = '/uploads/' . $session_data['name'] . '.gif';
+            }else{
+                $session_data = $this->session->userdata('logged_in');
+                $this->data['user'] = $session_data['name'];
+                $this->data['menubody'] = 'menucontent';
+                $this->data['avatar'] = '/uploads/' . $session_data['name'] . '.gif'; 
+            }
         }
         else{
             $this->data['menubody'] = 'menucontent_login';
@@ -48,20 +57,20 @@ class Home extends Application {
         $this->data['players'] = $results2;
     }
 
-    //Login user in
-    function login(){
-        $username = $this->input->post('username');
-
-        // Save session
-        $sess_array = array(
-            'id'    => 1,
-            'name' => $username,
-            'isloggedin'=> 1
-        );
-        $this->session->set_userdata('logged_in', $sess_array);
-        
-        redirect('home', 'refresh');
-    }
+//    //Login user in
+//    function login(){
+//        $username = $this->input->post('username');
+//
+//        // Save session
+//        $sess_array = array(
+//            'id'    => 1,
+//            'name' => $username,
+//            'isloggedin'=> 1
+//        );
+//        $this->session->set_userdata('logged_in', $sess_array);
+//        
+//        redirect('home', 'refresh');
+//    }
 
     //Log user out
     function logout(){

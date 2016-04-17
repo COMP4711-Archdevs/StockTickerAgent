@@ -14,9 +14,9 @@
 </div>
 
 
-<h3>Players transactions</h3>
+<h3 align="center">Players transactions</h3>
 
-<table align="center" style="width:25%" class="table table-bordered">
+<table align="center" style="width:70%" class="table table-bordered">
     <tr style="font-weight: bold">
         <td>Player</td>
         <td>Date Time</td>

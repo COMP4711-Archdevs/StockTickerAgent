@@ -38,6 +38,8 @@ class Home extends Application {
     function stocks(){
         $results = $this->stock->getAllStocksFromServer();
         $this->data['stocks'] = $results;
+        $this->data['recentMove'] = $this->stock->getRecentMovements();
+        $this->data['recentTran'] = $this->stock->getRecentTransactions();
     }
     
     //Get player data from player model

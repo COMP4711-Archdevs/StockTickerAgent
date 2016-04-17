@@ -16,6 +16,9 @@ if (!defined('APPPATH'))
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="/css/scrolling-nav.css" rel="stylesheet">
 
@@ -28,10 +31,16 @@ if (!defined('APPPATH'))
     <!-- Navigation -->
     {menucontent}
     <!-- Intro Section -->
-    <section id="intro" class="intro-section" style="background: url('/img/pattern.png');">
+    <section>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12" id="content">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>      
+                    <br/>
+                    <br/>   
                     {content}
                 </div>
             </div>

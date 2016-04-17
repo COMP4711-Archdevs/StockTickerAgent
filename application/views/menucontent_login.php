@@ -21,7 +21,7 @@
                         <a class="page-scroll" href="/Home">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/History">History</a>
+                        <a class="page-scroll" href="/Stocks">Stock</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="/Portfolio/detail/Henry">Portfolio</a>

@@ -45,8 +45,8 @@ class Portfolio extends Application {
     
     function create_dropdown($target){
         // parse the list of stock names into an array
-        $this->db->select('Player')->from('Players');
-        $result = $this->db->get()->result_array();
+        //$this->db->select('Player')->from('players');
+        $result = $this->player->all();
         $players = array();
         foreach($result as $player){
             foreach($player as $s){

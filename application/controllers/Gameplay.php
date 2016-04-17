@@ -110,8 +110,9 @@ class Gameplay extends Application {
     // buying a stock of quantity x
     function buy($stock, $quantity){
         // check if current player has enough funds to buy
-        $fund = 0; //!!!
-        $cost = $stock * $quantity;
+        $fund =  $this->player->getFund($session_data['name']);
+        $cost = $this->game->getStockCost($stock); // get cost of single stock
+        $cost *= $quantity;
         if($fund > $cost){
             // check game state = ready or open
             $status = $this->getStatus();
@@ -125,7 +126,9 @@ class Gameplay extends Application {
                 );
                 $response = $this->sendPost("http://bsx.jlparry.com/buy", $fields);
                 // subtract cost from player's fund and update !!!
-                
+                $this->player->updateFund($session_data['name'],-$cost);
+                // add stock to player
+                $this->game->updateStockQuantityBelongToPlayer($session_data['name'],$stock,$quantity);
                 // save transaction into db !!!
 
                 return 1;
@@ -136,9 +139,9 @@ class Gameplay extends Application {
     
     // selling x amount of a stock
     function sell($stock, $quantity){
-        // check if player has enough of the stock !!!
-        $holding = $this->game->some('username',$session_data['name']);
-        if($holding > $quantity){
+        // check if player has enough of the stock
+        $holding = $this->game->getStockQuantityBelongToPlayer($session_data['name'],$stock);
+        if($holding >= $quantity){
             // check game state = ready or open
             $status = $this->getStatus();
             if($status->state == 2 || $status->state == 3){
@@ -151,8 +154,12 @@ class Gameplay extends Application {
                     "certificate" => 123,
                 );
                 $response = $this->sendPost("http://bsx.jlparry.com/sell", $fields);
-                // update user holding for this stock !!!
-                
+                // add sold amount to player's fund
+                $price = $this->game->getStockCost($stock); // get cost of single stock
+                $price *= $quantity;
+                $this->player->updateFund($session_data['name'],$price);
+                // update user holding for this stock
+                $this->game->updateStockQuantityBelongToPlayer($session_data['name'],$stock,-$quantity);
                 // save transaction into db !!!
                 
                 return 1;

@@ -21,7 +21,9 @@ class Gameplay extends Application {
     
     function index(){
         
-        $this->data['title'] = "History";
+        $this->data['title'] = "Game Play";
+
+        $this->data['pagebody'] = 'game_play';
 
         // user must be logged in to play
         $session_data = $this->session->userdata('logged_in');
@@ -31,19 +33,47 @@ class Gameplay extends Application {
                 $session_data = $this->session->userdata('logged_in');
                 $this->data['user'] = $session_data['name'];
                 $this->data['menubody'] = 'menucontent_admin';
+                 $this->data['avatar'] = '/uploads/' . $session_data['name'] . '.gif';
             }else{
                 $session_data = $this->session->userdata('logged_in');
                 $this->data['user'] = $session_data['name'];
+                $this->data['info'] = $this->player->getUser($session_data['name']);
+
                 $this->data['menubody'] = 'menucontent';
+                  $this->data['avatar'] = '/uploads/' . $session_data['name'] . '.gif'; 
             }
         }
         else{
             $this->data['menubody'] = 'menucontent_login';
         }
         
-        // $this->do_stuff();
-        
+        $this->getStatus();
+        $this->getHoldingStock($session_data['name']);
+        $this->data['stocks'] =  $this->stock->getAllStocksFromServer();
+        $this->data['recentMove'] = $this->stock->getRecentMovements();
         $this->render();
+    }
+
+    public function getStatus() {
+        $xml = simplexml_load_file('http://bsx.jlparry.com/status');
+        $this->data['round']= $xml->round;
+        $this->data['state'] = $xml->state;
+        $this->data['countdown'] = $xml->countdown;
+        if($xml->state == 0) {
+            $this->data['message'] =  "Not running";
+        } elseif($xml->state == 1) {
+            $this->data['message'] =  "Setting Up";
+        } elseif($xml->state == 2) {
+            $this->data['message'] = "Ready";
+        } elseif($xml->state == 3) {
+            $this->data['message'] = "Active";
+        } else {
+            $this->data['message'] = "Round Over";
+        }
+    }
+
+    public function getHoldingStock($name){
+        $this->data['holdings'] = $this->game->some('username',$name);
     }
     
     // register to bsx server

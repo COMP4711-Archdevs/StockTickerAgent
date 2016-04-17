@@ -18,6 +18,7 @@
             </div>
             <div class="panel-body">
                 <?php echo form_open_multipart('register/do_upload');?>
+                <label for="userfile">.gif only</label>
                 <div class="form-group">
                     <input type="file" name="userfile" size="20" />
                 </div>

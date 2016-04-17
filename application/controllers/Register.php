@@ -37,7 +37,7 @@ class Register extends Application{
         
                 $this->load->library('upload');
                 $config['upload_path'] = 'uploads/';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'gif';
 		$config['max_size']	= '100';
 		$config['max_width']  = '1000';
 		$config['max_height']  = '1000';

@@ -12,6 +12,7 @@
  * @author a00906732
  */
 class Register extends Application{
+    
     public function __construct()
     {
         parent::__construct();
@@ -22,11 +23,39 @@ class Register extends Application{
     
     function index()
     {
+        $this->filename = "Index";
        //$this->load->view('user_registration_view');
        $this->data['title'] = "Stock Ticker Agent";
        $this->data['pagebody'] = 'user_registration_view';
        $this->data['menubody'] = 'menucontent_login';
        $this->render();
+    }
+    
+    function do_upload(){
+        
+                $session_data = $this->session->userdata('pic_upload');
+        
+                $this->load->library('upload');
+                $config['upload_path'] = 'uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '100';
+		$config['max_width']  = '1000';
+		$config['max_height']  = '1000';
+                $config['file_name'] = $session_data['name'];
+
+                $this->upload->initialize($config);
+                
+		//$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload())
+		{
+                    echo "Upload failed.";
+                    echo $this->upload->display_errors();
+		}
+		else
+		{
+                    redirect('/Home');
+		}
     }
 
     function register()
@@ -67,7 +96,17 @@ class Register extends Application{
                 {
                     // successfully registered
                     //$this->session->set_flashdata('msg','<div class="alert alert-success text-center">You are Successfully Registered!</div>');
-                    redirect('/Register');
+                    //redirect('/Register');
+                    $sess_array = array(
+                        'id'    => 1,
+                        'name' => $this->input->post('fname'),
+                    );
+                    $this->session->set_userdata('pic_upload', $sess_array);
+                    
+                    $this->data['title'] = "Stock Ticker Agent";
+                    $this->data['pagebody'] = 'avatar_upload';
+                    $this->data['menubody'] = 'menucontent_login';
+                    $this->render();
                 }
                 else
                 {

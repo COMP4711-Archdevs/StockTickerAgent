@@ -36,7 +36,6 @@
                         <input class="form-control" name="cpassword" placeholder="Confirm Password" type="password" />
                         <span class="text-danger"></span>
                     </div>
-
                     <div class="form-group">
                         <button name="submit" type="submit" class="btn btn-default">Signup</button>
                         <button name="cancel" type="reset" class="btn btn-default">Cancel</button>

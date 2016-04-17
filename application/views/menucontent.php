@@ -33,6 +33,9 @@
                     <li>
                         <a href="">Welcome back {user}</a>
                     </li>
+                    <li>
+                        <img src="/uploads/{user}.gif" width="50" height="50"
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

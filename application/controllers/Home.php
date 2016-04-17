@@ -12,7 +12,6 @@ class Home extends Application {
     }
     
     function index(){
-        
         $this->data['title'] = "Stock Ticker Agent";
         
         // Get stock data
@@ -27,6 +26,7 @@ class Home extends Application {
              $session_data = $this->session->userdata('logged_in');
              $this->data['user'] = $session_data['name'];
              $this->data['menubody'] = 'menucontent';
+             $this->data['avatar'] = '/uploads/' . $session_data['name'] . '.gif';
         }
         else{
             $this->data['menubody'] = 'menucontent_login';

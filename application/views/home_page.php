@@ -19,11 +19,13 @@
 
 <table align="center" style="width:25%" class="table table-bordered">
     <tr style="font-weight: bold">
+        <td>Avatar</td>
         <td>Player</td>
         <td>Cash</td>
     </tr>
     {players}
         <tr>
+            <td><img src="/uploads/{Player}.gif" width="50" height="50"></td>
             <td><a href="/Portfolio/detail/{Player}">{Player}</a></td>
             <td>{Cash}</td>
         </tr>

@@ -101,9 +101,9 @@ class Gameplay extends Application {
                 "password" => "tuesday",
             );
             $response = $this->sendPost("http://bsx.jlparry.com", $fields);
-            // save the token returned in response !!!
-            
-            
+            // save the token returned in response
+            $xml = simplexml_load_string($response);
+            $this->session->token = (string)$xml->token;
         }
     }
     
@@ -119,18 +119,21 @@ class Gameplay extends Application {
             if($status->state == 2 || $status->state == 3){
                 $fields = array(
                     "team" => "S10",
-                    "token" => 123, // update these !!!
-                    "player" => 123,
+                    "token" => $this->session->token,
+                    "player" => $session_data['name'],
                     "stock" => $stock,
                     "quantity" => $quantity,
                 );
                 $response = $this->sendPost("http://bsx.jlparry.com/buy", $fields);
-                // subtract cost from player's fund and update !!!
+                // save certificate token
+                $xml = simplexml_load_string($response);
+                $this->session->certificate = (string)$xml->certificate;
+                // subtract cost from player's fund and update
                 $this->player->updateFund($session_data['name'],-$cost);
                 // add stock to player
                 $this->game->updateStockQuantityBelongToPlayer($session_data['name'],$stock,$quantity);
-                // save transaction into db !!!
-
+                // save transaction into db
+                recordTransaction($session_data['name'],$stock,$quantity,'buy');
                 return 1;
             }
         }
@@ -147,11 +150,11 @@ class Gameplay extends Application {
             if($status->state == 2 || $status->state == 3){
                 $fields = array(
                     "team" => 'S10',
-                    "token" => 123, // update these
-                    "player" => 123,
+                    "token" => $this->session->token,
+                    "player" => $session_data['name'],
                     "stock" => $stock,
                     "quantity" => $quantity,
-                    "certificate" => 123,
+                    "certificate" => $this->session->certificate,
                 );
                 $response = $this->sendPost("http://bsx.jlparry.com/sell", $fields);
                 // add sold amount to player's fund
@@ -160,10 +163,9 @@ class Gameplay extends Application {
                 $this->player->updateFund($session_data['name'],$price);
                 // update user holding for this stock
                 $this->game->updateStockQuantityBelongToPlayer($session_data['name'],$stock,-$quantity);
-                // save transaction into db !!!
-                
+                // save transaction into db
+                recordTransaction($session_data['name'],$stock,$quantity,'sell');
                 return 1;
-                
             }
         }
         return 0;

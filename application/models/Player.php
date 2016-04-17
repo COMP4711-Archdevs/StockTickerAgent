@@ -31,7 +31,7 @@ class Player extends MY_Model {
     
     function login($username, $password)
     {
-      $this->db->select('player, password');
+      $this->db->select('player, password, role');
       $this->db->from('players');
       $this->db->where('player', $username);
       $this->db->where('password', MD5($password));

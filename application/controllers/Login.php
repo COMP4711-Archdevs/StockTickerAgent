@@ -66,7 +66,8 @@ class Login extends Application {
           $sess_array = array(
             'id'    => 1,
             'name' => $username,
-            'isloggedin'=> 1
+            'isloggedin'=> 1,
+            'role'=>$row->role
         );
           $this->session->set_userdata('logged_in', $sess_array);
         }

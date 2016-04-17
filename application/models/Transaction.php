@@ -16,4 +16,22 @@ class Transaction extends MY_Model {
     function __construct() {
         parent::__construct('transactions','dateTime');
     }
+    
+    public function recordTransaction($player,$code,$quantity,$trans){
+        $data = array(
+            'DateTime' => getdate(),
+            'Player' => $player,
+            'Stock'  => $code,
+            'Trans'  => $trans,
+            'Quantity'  => $quantity,
+        );
+        $this->db->insert('transactions', $data);
+    
+        if($affected_rows <= 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

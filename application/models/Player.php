@@ -29,6 +29,23 @@ class Player extends MY_Model {
         return $this->db->affected_rows() > 0 ? TRUE : FALSE;         
     }
     
+    function deleteUser($name){
+        $this->db->delete('players', array('Player' => $name));
+    }
+    
+    function getUser($name){
+        $query = $this->db->get_where('players', array('Player' => $name));
+        return $query->result();
+    }
+    
+    function updateUser($player, $data){
+        if($this->db->update('players', $data, array('Player' => $player))){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     function login($username, $password)
     {
       $this->db->select('player, password, role');

@@ -36,10 +36,18 @@ class History extends Application {
 //        $this->data['user'] = $session_data['name'];
 //        $this->data['menubody'] = 'menucontent';
 
+        $session_data = $this->session->userdata('logged_in');
+        
         if($this->session->userdata('logged_in')){
-             $session_data = $this->session->userdata('logged_in');
-             $this->data['user'] = $session_data['name'];
-             $this->data['menubody'] = 'menucontent';
+            if($session_data['role'] == 'admin'){
+                $session_data = $this->session->userdata('logged_in');
+                $this->data['user'] = $session_data['name'];
+                $this->data['menubody'] = 'menucontent_admin';
+            }else{
+                $session_data = $this->session->userdata('logged_in');
+                $this->data['user'] = $session_data['name'];
+                $this->data['menubody'] = 'menucontent';
+            }
         }
         else{
             $this->data['menubody'] = 'menucontent_login';

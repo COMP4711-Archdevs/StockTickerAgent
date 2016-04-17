@@ -14,6 +14,14 @@ class Game extends MY_Model {
 
 	return ($result->num_rows() === 1 && $row->quantity) ? $row->quantity : false;
     }
+    
+    public function getStockCost($code){
+        $sql = "SELECT value FROM stocks WHERE code = '{$code}' LIMIT 1";
+        $result = $this->db->query($sql);
+        $row = $result->row();
+        
+        return ($result->num_rows() === 1 && $row->value) ? $row->value : false;
+    }
 
     public function updateStockQuantityBelongToPlayer($player,$code,$quantity){
         $current = $this->getStockQuantityBelongToPlayer($player,$code);

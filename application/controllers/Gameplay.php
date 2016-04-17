@@ -53,8 +53,16 @@ class Gameplay extends Application {
         $this->data['recentMove'] = $this->stock->getRecentMovements();
 
         //this is example to get quantity of 1 stock belong to 1 player
-        //$this->data['quan'] = $this->game->getStockQuantityBelongToPlayer($session_data['name'],'CCC');
-       
+        //$quantity = $this->game->getStockQuantityBelongToPlayer($session_data['name'],'CCC');
+        
+        //update quantity stock belong
+        //$this->game->updateStockQuantityBelongToPlayer($session_data['name'],'CCC',-10);
+        
+        //get fund
+        //$fund =  $this->player->getFund($session_data['name']);
+
+        //update fund
+        //$this->player->updateFund($session_data['name'],-1000);
 
         $this->render();
     }

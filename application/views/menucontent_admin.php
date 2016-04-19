@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation"  style="background: #c1e2b3">
         <div class="container">
             <div class="navbar-header page-scroll">
@@ -24,25 +25,19 @@
                         <a class="page-scroll" href="/Stocks">Stock</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/Portfolio/detail/Henry">Portfolio</a>
+                        <a class="page-scroll" href="/Portfolio/detail/{user}">Porfolio</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/Login">Login</a>
+                        <a class="page-scroll" href="/Admin">Manage Users</a>
                     </li>
-<!--                <li>
-                        <form action="/Home/login" method="post">
-						    <div class = "form-group form-inline control-group info">
-                                <select name="username" class="form-control input-sm">
-                                    {players}
-                                        <option value="{Player}">{Player}</option>
-                                    {/players}
-                                </select>
-						    	<input type="submit" class="btn btn-default btn-sm" value="Login">
-						    </div>
-						<form> 
-                    </li>-->
                     <li>
-                        <a class="page-scroll" href="/Register">Register</a>
+                        <a href="/Home/logout">Logout</a>
+                    </li>
+                    <li>
+                        <a href="">Welcome back {user}</a>
+                    </li>
+                    <li>
+                        <img src="/uploads/{user}.gif" width="50" height="50">
                     </li>
                 </ul>
             </div>
@@ -50,3 +45,4 @@
         </div>
         <!-- /.container -->
     </nav>
+

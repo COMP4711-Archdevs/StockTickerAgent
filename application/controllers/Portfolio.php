@@ -29,11 +29,19 @@ class Portfolio extends Application {
         //Load page body
         $this->data['pagebody'] = 'portfolio_page';
 
+        $session_data = $this->session->userdata('logged_in');
+        
         //Check user login, display menubar
         if($this->session->userdata('logged_in')){
-             $session_data = $this->session->userdata('logged_in');
-             $this->data['user'] = $session_data['name'];
-             $this->data['menubody'] = 'menucontent';
+            if($session_data['role'] == 'admin'){
+                $session_data = $this->session->userdata('logged_in');
+                $this->data['user'] = $session_data['name'];
+                $this->data['menubody'] = 'menucontent_admin';
+            }else{
+                $session_data = $this->session->userdata('logged_in');
+                $this->data['user'] = $session_data['name'];
+                $this->data['menubody'] = 'menucontent';
+            }
         }
         else{
             $this->data['menubody'] = 'menucontent_login';
@@ -45,8 +53,8 @@ class Portfolio extends Application {
     
     function create_dropdown($target){
         // parse the list of stock names into an array
-        $this->db->select('Player')->from('Players');
-        $result = $this->db->get()->result_array();
+        //$this->db->select('Player')->from('players');
+        $result = $this->player->all();
         $players = array();
         foreach($result as $player){
             foreach($player as $s){

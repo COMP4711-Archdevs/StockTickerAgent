@@ -7,6 +7,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 <h2><small>{title}</small></h2>
             </div>
@@ -22,16 +25,22 @@
                         <a class="page-scroll" href="/Home">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/History">History</a>
+                        <a class="page-scroll" href="/Stocks">Stock</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="/Portfolio/detail/{user}">Porfolio</a>
                     </li>
                     <li>
-                        <h6>Welcome back {user}</h6>
+                        <a class="page-scroll" href="/Gameplay">Game Play</a>
                     </li>
                     <li>
                         <a href="/Home/logout">Logout</a>
+                    </li>
+                    <li>
+                        <a href="">Welcome back {user}</a>
+                    </li>
+                    <li>
+                        <img src="/uploads/{user}.gif" width="50" height="50">
                     </li>
                 </ul>
             </div>
